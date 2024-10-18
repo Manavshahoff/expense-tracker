@@ -37,4 +37,18 @@ public class ExpenseServiceImpl implements ExpenseService {
     public void deleteExpense(Long id) {
         expenseRepository.deleteById(id);
     }
+
+    @Override
+    public Double getTotalExpenses(){
+        return expenseRepository.getTotalExpenses();
+    }
+
+    @Override
+    public List<Object[]> getExpensesByCategory(){
+        return expenseRepository.getExpenseByCategory();
+
+    }
+
+  
+
 }

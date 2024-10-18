@@ -4,6 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 @RestController
 @RequestMapping("/api/expenses")
@@ -37,4 +40,17 @@ public class ExpenseController {
     public void deleteExpense(@PathVariable Long id) {
         expenseService.deleteExpense(id);
     }
+
+    //Endpoint to get total expenses
+    @GetMapping("/total")
+    public Double gettotalExpenses() {
+        return expenseService.getTotalExpenses();
+    }
+
+    //Endpoint to get expenses by category
+    @GetMapping("/by-category")
+    public List<Object[]> getExpenseByCategory() {
+        return expenseService.getExpensesByCategory();
+    }
+    
 }
