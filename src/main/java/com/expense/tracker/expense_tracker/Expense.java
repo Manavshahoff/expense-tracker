@@ -1,9 +1,13 @@
 package com.expense.tracker.expense_tracker;
 
+import java.sql.Date;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 
 @Entity
 public class Expense {
@@ -15,6 +19,9 @@ public class Expense {
     private String description;
     private double amount;
     private String category;
+
+    @Temporal(TemporalType.DATE)
+    private Date date;
 
     // Getters and Setters
     public Long getId() {

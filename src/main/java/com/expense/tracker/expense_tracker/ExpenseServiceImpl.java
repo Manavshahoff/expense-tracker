@@ -3,6 +3,10 @@ package com.expense.tracker.expense_tracker;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
+
 import java.util.List;
 import java.util.Optional;
 
@@ -48,6 +52,40 @@ public class ExpenseServiceImpl implements ExpenseService {
         return expenseRepository.getExpenseByCategory();
 
     }
+
+    @Override
+    public List<Expense> getExpensesByCategory(String category) {
+        return expenseRepository.findByCategory(category);
+    }
+
+    @Override
+    public List<Expense> getExpensesSortedByAmountAsc() {
+        return expenseRepository.findAllByOrderByAmountAsc();
+    }
+
+    @Override
+    public List<Expense> getExpensesSortedByAmountDesc() {
+        return expenseRepository.findAllByOrderByAmountDesc();
+    }
+
+    @Override
+    public List<Expense> getExpensesSortedByDateAsc() {
+        return expenseRepository.findAllByOrderByDateAsc();
+    }
+
+    @Override
+    public List<Expense> getExpensesSortedByDateDesc() {
+        return expenseRepository.findAllByOrderByDateDesc();
+    }
+
+    @Override
+    public Page<Expense> getAllExpensesPaginated(Pageable pageable) {
+        return expenseRepository.findAll(pageable);
+    }
+
+
+
+
 
   
 
